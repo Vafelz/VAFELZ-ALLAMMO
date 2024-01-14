@@ -13,7 +13,7 @@ import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderCon
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
-import * as baseJson from "../db/superammotrader.json";
+import * as baseJson from "../db/base.json";
 import * as assortJson from "../db/assort.json";
 
 class VafelsTrader implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod {
@@ -424,7 +424,7 @@ class VafelsTrader implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod {
         this.pushTableItem("338ap", "5fc382a9d724d907e2077dab", 2565);
     }
     private pushTableItem(tableID: string, itemID: string, price: int) {
-        const tableID: Item = {
+        tableID: Item = {
             _id: itemID,
             _tpl: itemID,
             parentId: "hideout",
