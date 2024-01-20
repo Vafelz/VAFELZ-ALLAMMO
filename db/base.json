@@ -21,9 +21,7 @@
         "min_return_hour": 0
     },
     "items_buy": {
-        "category": [
-            "54009119af1c881c07000029"
-        ],
+        "category": ["54009119af1c881c07000029"],
         "id_list": []
     },
     "items_buy_prohibited": {
@@ -39,36 +37,6 @@
             "insurance_price_coef": 10,
             "minLevel": 1,
             "minSalesSum": 0,
-            "minStanding": 0,
-            "repair_price_coef": 175
-        },
-        {
-            "buy_price_coef": 38,
-            "exchange_price_coef": 0,
-            "heal_price_coef": 0,
-            "insurance_price_coef": 15,
-            "minLevel": 10,
-            "minSalesSum": 750000,
-            "minStanding": 0,
-            "repair_price_coef": 175
-        },
-        {
-            "buy_price_coef": 38,
-            "exchange_price_coef": 0,
-            "heal_price_coef": 0,
-            "insurance_price_coef": 10,
-            "minLevel": 20,
-            "minSalesSum": 1500000,
-            "minStanding": 0,
-            "repair_price_coef": 175
-        },
-        {
-            "buy_price_coef": 38,
-            "exchange_price_coef": 0,
-            "heal_price_coef": 0,
-            "insurance_price_coef": 10,
-            "minLevel": 30,
-            "minSalesSum": 2500000,
             "minStanding": 0,
             "repair_price_coef": 175
         }
@@ -120,8 +88,8 @@
         "5b47574386f77428ca22b344",
         "5b47574386f77428ca22b342",
         "5b47574386f77428ca22b341",
-        "5b47574386f77428ca22b343",
+        "5b47574386f77428ca22b343"
     ],
     "surname": "",
-    "unlockedByDefault": true,
+    "unlockedByDefault": true
 }
