@@ -671,8 +671,28 @@
             }
         },
         {
+            "_id": "vaf9x217u4",
+            "_tpl": "6576f93989f0062e741ba952",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999999999
+            }
+        },
+        {
             "_id": "vaf9x21btgzh",
             "_tpl": "5a26ac0ec4a28200741e1e18",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999999999
+            }
+        },
+        {
+            "_id": "vaf9x217n42",
+            "_tpl": "6576f4708ca9c4381d16cd9d",
             "parentId": "hideout",
             "slotId": "hideout",
             "upd": {
@@ -841,8 +861,18 @@
             }
         },
         {
+            "_id": "vaf9x39fmj",
+            "_tpl": "6576f96220d53a5b8f3e395e",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999999999
+            }
+        },
+        {
             "_id": "vaf9x39sp5gs",
-            "_tpl": "vaf57a0dfb82459774d3078b56c",
+            "_tpl": "57a0dfb82459774d3078b56c",
             "parentId": "hideout",
             "slotId": "hideout",
             "upd": {
@@ -1313,6 +1343,26 @@
         {
             "_id": "vaf300ap",
             "_tpl": "5fd20ff893a8961fc660a954",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999999999
+            }
+        },
+        {
+            "_id": "vaf68x51fmj",
+            "_tpl": "6529302b8c26af6326029fb7",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999999999
+            }
+        },
+        {
+            "_id": "vaf68x51hybrid",
+            "_tpl": "6529243824cbe3c74a05e5c1",
             "parentId": "hideout",
             "slotId": "hideout",
             "upd": {
@@ -2088,11 +2138,27 @@
                 }
             ]
         ],
+        "vaf9x217u4": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 153
+                }
+            ]
+        ],
         "vaf9x21btgzh": [
             [
                 {
                     "_tpl": "5449016a4bdc2d6f028b456f",  
                     "count": 312
+                }
+            ]
+        ],
+        "vaf9x217n42": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 441
                 }
             ]
         ],
@@ -2221,6 +2287,14 @@
                 {
                     "_tpl": "5449016a4bdc2d6f028b456f",  
                     "count": 417
+                }
+            ]
+        ],
+        "vaf9x39fmj": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 78
                 }
             ]
         ],
@@ -2608,6 +2682,22 @@
                 }
             ]
         ],
+        "vaf68x51fmj": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 296
+                }
+            ]
+        ],
+        "vaf68x51hybrid": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 629
+                }
+            ]
+        ],
         "vaf762x51ultranosler": [
             [
                 {
@@ -2861,7 +2951,9 @@
         "vaf9x21pegzh": 1,
         "vaf9x21pgzh": 1,
         "vaf9x21psgzh": 1,
+        "vaf9x217u4": 1,
         "vaf9x21btgzh": 1,
+        "vaf9x217n42": 1,
         "vaf357sp": 1,
         "vaf35hp": 1,
         "vaf357jhp": 1,
@@ -2878,6 +2970,7 @@
         "vaf46x30jspsx": 1,
         "vaf46x30fmjsx": 1,
         "vaf46x30apsx": 1,
+        "vaf9x39fmj": 1,
         "vaf9x39sp5gs": 1,
         "vaf9x39sppgs": 1,
         "vaf9x39pab9gs": 1,
@@ -2926,6 +3019,8 @@
         "vaf300m62": 1,
         "vaf300cbj": 1,
         "vaf300ap": 1,
+        "vaf68x51fmj": 1,
+        "vaf68x51hybrid": 1,
         "vaf762x51ultranosler": 1,
         "vaf762x51tcwsp": 1,
         "vaf762x51bcpfmj": 1,
