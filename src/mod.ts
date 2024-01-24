@@ -1,5 +1,6 @@
-"use strict"
 import { DependencyContainer } from "tsyringe";
+
+// SPT Types
 import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
 import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
@@ -8,23 +9,22 @@ import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ImageRouter } from "@spt-aki/routers/ImageRouter";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
-import { ITraderAssort, ITraderBase } from "@spt-aki/models/eft/common/tables/ITrader";
 import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderConfig";
-import { JsonUtil } from "@spt-aki/utils/JsonUtil";
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
+import { ITraderAssort, ITraderBase } from "@spt-aki/models/eft/common/tables/ITrader";
+import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
+import { JsonUtil } from "@spt-aki/utils/JsonUtil";
+
+// Trader Settings
 import * as baseJson from "../db/base.json";
 import * as assortJson from "../db/assort.json";
-import { TraderHelper } from "./traderHelpers";
-import { FluentAssortConstructor } from "./fluentTraderAssortCreator";
-import { Money } from "@spt-aki/models/enums/Money";
 import { Traders } from "@spt-aki/models/enums/Traders";
-import { HashUtil } from "@spt-aki/utils/HashUtil";
 
 class VafelsTrader implements IPreAkiLoadMod, IPostDBLoadMod {
-    mod: string;;
-    logger: ILogger;
+    private mod: string;;
+    private logger: ILogger;
     private configServer: ConfigServer;
+    private ragfairConfig: IRagfairConfig; 
 
     constructor() {
         this.mod = "VAFELZ-ALLAMMO";
@@ -41,9 +41,12 @@ class VafelsTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         this.setupTraderUpdateTime(traderConfig);
 
         Traders[baseJson._id] = baseJson._id;
+
+        this.logger.debug(`[${this.mod}] preAki Loaded`);
     }
     public postDBLoad(container: DependencyContainer): void {
         this.configServer = container.resolve("ConfigServer");
+        this.ragfairConfig = this.configServer.getConfig(ConfigTypes.RAGFAIR);
 
         const logger = container.resolve("WinstonLogger");
 
@@ -56,6 +59,8 @@ class VafelsTrader implements IPreAkiLoadMod, IPostDBLoadMod {
 
         this.addTraderToDb(baseJson, tables, jsonUtil);
         this.addTraderToLocales(tables, baseJson.name, "VAFELZ", baseJson.nickname, baseJson.location, "OwO");
+
+        this.ragfairConfig.traders[baseJson._id] = true;
     }
     private registerProfileImage(preAkiModLoader: PreAkiModLoader, imageRouter: ImageRouter): void {
         const imageFilePath = `./${preAkiModLoader.getModPath(this.mod)}res`;
@@ -68,13 +73,13 @@ class VafelsTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     private addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void {
         tables.traders[traderDetailsToAdd._id] = {
             assort: jsonUtil.deserialize(jsonUtil.serialize(assortJson)) as ITraderAssort,
-            base: jsonUtil.deserialize(jsonUtil.serialize(traderDetailsToAdd)) as ITraderBase
+            base: jsonUtil.deserialize(jsonUtil.serialize(traderDetailsToAdd)) as ITraderBase,
             questassort: {
                 started: {},
                 success: {},
                 fail: {}
             }
-        }
+        };
     }
     private addTraderToLocales(tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string) {
         const locales = Object.values(tables.locales.global) as Record<string,string>[];
