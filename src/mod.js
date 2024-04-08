@@ -24,51 +24,66 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ConfigTypes_1 = require("C:/snapshot/project/obj/models/enums/ConfigTypes");
+const Traders_1 = require("C:/snapshot/project/obj/models/enums/Traders");
+// Trader Settings
 const baseJson = __importStar(require("../db/base.json"));
 const assortJson = __importStar(require("../db/assort.json"));
-const Traders_1 = require("C:/snapshot/project/obj/models/enums/Traders");
-class VafelsTrader {
+class VafelzTrader {
     mod;
-    ;
     logger;
-    configServer;
     constructor() {
         this.mod = "VAFELZ-ALLAMMO";
     }
+    /*
+     * Some work needs to be done prior to SPT code being loaded, registering the profile image + setting trader update time inside the trader config json
+     * @param container dependency container
+     */
     preAkiLoad(container) {
-        const logger = container.resolve("WinstonLogger");
+        this.logger = container.resolve("WinstonLogger");
+        this.logger.debug(`[${this.mod}] preAki loading...`);
         const preAkiModLoader = container.resolve("PreAkiModLoader");
         const imageRouter = container.resolve("ImageRouter");
+        const hashUtil = container.resolve("HashUtil");
         const configServer = container.resolve("ConfigServer");
         const traderConfig = configServer.getConfig(ConfigTypes_1.ConfigTypes.TRADER);
+        // const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
         this.registerProfileImage(preAkiModLoader, imageRouter);
-        this.setupTraderUpdateTime(traderConfig);
+        this.setTraderUpdateTime(traderConfig);
         Traders_1.Traders[baseJson._id] = baseJson._id;
+        // ragfairConfig.traders[baseJson._id] = true;
+        this.logger.debug(`[${this.mod}] preAki loaded`);
     }
+    /*
+     * Majority of trader-related work occurs after the aki database has been loaded but prior to SPT code being run
+     * @param container dependency container
+     */
     postDBLoad(container) {
-        this.configServer = container.resolve("ConfigServer");
-        this.ragfairConfig = this.configServer.getConfig(ConfigTypes_1.ConfigTypes.RAGFAIR);
-        const logger = container.resolve("WinstonLogger");
+        this.logger.debug(`[${this.mod}] postDB loading...`);
         const db = container.resolve("DatabaseServer");
         const configServer = container.resolve("ConfigServer");
-        const traderConfig = configServer.getConfig(ConfigTypes_1.ConfigTypes.TRADER);
-        const jsonUtil = container.resolve("JsonUtil");
         const tables = db.getTables();
-        this.addTraderToDb(baseJson, tables, jsonUtil);
-        this.addTraderToLocales(tables, baseJson.name, "", baseJson.nickname, baseJson.location, "UwU");
+        const jsonUtil = container.resolve("JsonUtil");
+        this.addTraderToDB(baseJson, tables, jsonUtil);
+        this.addTraderToLocales(tables, baseJson.name, "VAFELZ", baseJson.nickname, baseJson.location, "OwO");
+        this.logger.debug(`[${this.mod}] postDB loaded`);
     }
     registerProfileImage(preAkiModLoader, imageRouter) {
         const imageFilePath = `./${preAkiModLoader.getModPath(this.mod)}res`;
         imageRouter.addRoute(baseJson.avatar.replace(".jpg", ""), `${imageFilePath}/vafelz.jpg`);
     }
-    setupTraderUpdateTime(traderConfig) {
+    setTraderUpdateTime(traderConfig) {
         const traderRefreshRecord = { traderId: baseJson._id, seconds: 3600 };
         traderConfig.updateTime.push(traderRefreshRecord);
     }
-    addTraderToDb(traderDetailsToAdd, tables, jsonUtil) {
-        tables.traders[traderDetailsToAdd._id] = {
+    addTraderToDB(VAFELZ, tables, jsonUtil) {
+        tables.traders[VAFELZ._id] = {
             assort: jsonUtil.deserialize(jsonUtil.serialize(assortJson)),
-            base: jsonUtil.deserialize(jsonUtil.serialize(traderDetailsToAdd))
+            base: jsonUtil.deserialize(jsonUtil.serialize(VAFELZ)),
+            questassort: {
+                started: {},
+                success: {},
+                fail: {}
+            }
         };
     }
     addTraderToLocales(tables, fullName, firstName, nickName, location, description) {
@@ -82,5 +97,5 @@ class VafelsTrader {
         }
     }
 }
-module.exports = { mod: new VafelsTrader() };
+module.exports = { mod: new VafelzTrader() };
 //# sourceMappingURL=mod.js.map
