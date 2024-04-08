@@ -77,7 +77,12 @@ class VafelzTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     }
 
     private setTraderUpdateTime(traderConfig: ITraderConfig): void {
-        const traderRefreshRecord: UpdateTime = { traderId: baseJson._id, seconds: 3600 };
+        const traderRefreshRecord: UpdateTime = {
+            traderId: baseJson._id,
+            seconds: {
+                min: 3600,
+                max: 4000
+            } };
         traderConfig.updateTime.push(traderRefreshRecord);
     }
 
