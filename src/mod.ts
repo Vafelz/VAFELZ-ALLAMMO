@@ -26,7 +26,7 @@ class VafelzTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     private logger: ILogger;
 
     constructor() {
-        this.mod = "VAFELZ-ALLAMMO"
+        this.mod = "VAFELZ-ALLAMMO-1.1.0"
     }
 
     /*
