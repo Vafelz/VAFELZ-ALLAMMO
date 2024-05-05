@@ -32,7 +32,7 @@ class VafelzTrader {
     mod;
     logger;
     constructor() {
-        this.mod = "VAFELZ-ALLAMMO";
+        this.mod = "VAFELZ-ALLAMMO-1.1.2";
     }
     /*
      * Some work needs to be done prior to SPT code being loaded, registering the profile image + setting trader update time inside the trader config json
@@ -46,11 +46,11 @@ class VafelzTrader {
         const hashUtil = container.resolve("HashUtil");
         const configServer = container.resolve("ConfigServer");
         const traderConfig = configServer.getConfig(ConfigTypes_1.ConfigTypes.TRADER);
-        // const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
+        const ragfairConfig = configServer.getConfig(ConfigTypes_1.ConfigTypes.RAGFAIR);
         this.registerProfileImage(preAkiModLoader, imageRouter);
         this.setTraderUpdateTime(traderConfig);
         Traders_1.Traders[baseJson._id] = baseJson._id;
-        // ragfairConfig.traders[baseJson._id] = true;
+        ragfairConfig.traders[baseJson._id] = true;
         this.logger.debug(`[${this.mod}] preAki loaded`);
     }
     /*
@@ -72,7 +72,13 @@ class VafelzTrader {
         imageRouter.addRoute(baseJson.avatar.replace(".jpg", ""), `${imageFilePath}/vafelz.jpg`);
     }
     setTraderUpdateTime(traderConfig) {
-        const traderRefreshRecord = { traderId: baseJson._id, seconds: 3600 };
+        const traderRefreshRecord = {
+            traderId: baseJson._id,
+            seconds: {
+                min: 3600,
+                max: 4000
+            }
+        };
         traderConfig.updateTime.push(traderRefreshRecord);
     }
     addTraderToDB(VAFELZ, tables, jsonUtil) {

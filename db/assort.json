@@ -1599,6 +1599,76 @@
                 "UnlimitedCount": true,
                 "StackObjectsCount": 20000
             }
+        },
+        {
+            "_id": "vafdoc",
+            "_tpl": "590c60fc86f77412b13fddcf",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafdog",
+            "_tpl": "5c093e3486f77430cb02e593",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafammo",
+            "_tpl": "5aafbde786f774389d0cbc0f",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafpistol",
+            "_tpl": "567143bf4bdc2d1a0f8b4567",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafmag",
+            "_tpl": "5c127c4486f7745625356c13",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafweapon",
+            "_tpl": "59fb023c86f7746d0d4b423c",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
+        },
+        {
+            "_id": "vafitem",
+            "_tpl": "5c0a840b86f7742ffa4f2482",
+            "parentId": "hideout",
+            "slotId": "hideout",
+            "upd": {
+                "UnlimitedCount": true,
+                "StackObjectsCount": 20000
+            }
         }
     ],
     "barter_scheme": {
@@ -2881,6 +2951,62 @@
                     "count": 2565
                 }
             ]
+        ],
+        "vafdoc": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 105505
+                }
+            ]
+        ],
+        "vafdog": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 195300
+                }
+            ]
+        ],
+        "vafammo": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 102408
+                }
+            ]
+        ],
+        "vafpistol": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 6600
+                }
+            ]
+        ],
+        "vafmag": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 148050
+                }
+            ]
+        ],
+        "vafweapon": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 688720
+                }
+            ]
+        ],
+        "vafitem": [
+            [
+                {
+                    "_tpl": "5449016a4bdc2d6f028b456f",  
+                    "count": 1953000
+                }
+            ]
         ]
     },
     "loyal_level_items": {
@@ -3043,6 +3169,13 @@
         "vaf338tacx": 1,
         "vaf338ucw": 1,
         "vaf338fmj": 1,
-        "vaf338ap": 1
+        "vaf338ap": 1,
+        "vafdoc": 1,
+        "vafdog": 1,
+        "vafammo": 1,
+        "vafpistol": 1,
+        "vafmag": 1,
+        "vafweapon": 1,
+        "vafitem": 1
     }
 }
