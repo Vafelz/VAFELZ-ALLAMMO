@@ -12,7 +12,7 @@ import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
 import { Traders } from "@spt-aki/models/enums/Traders";
 import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderConfig";
 import { ITraderBase, ITraderAssort } from "@spt-aki/models/eft/common/tables/ITrader";
-// import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
+import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
 import { ImageRouter } from "@spt-aki/routers/ImageRouter";
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
@@ -42,13 +42,13 @@ class VafelzTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         const hashUtil: HashUtil = container.resolve<HashUtil>("HashUtil");
         const configServer = container.resolve<ConfigServer>("ConfigServer");
         const traderConfig: ITraderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
-        // const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
+        const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
 
         this.registerProfileImage(preAkiModLoader, imageRouter);
         this.setTraderUpdateTime(traderConfig);
 
         Traders[baseJson._id] = baseJson._id;
-        // ragfairConfig.traders[baseJson._id] = true;
+        ragfairConfig.traders[baseJson._id] = true;
 
         this.logger.debug(`[${this.mod}] preAki loaded`);
     }
